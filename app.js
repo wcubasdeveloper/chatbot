@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('./public/web'));
 
-const port = 80;
+const port = 3000;
 
 const assistant = new AssistantV1({
   username: "14cbe5b4-074b-4ae8-a2c5-8bb976fef4b4",
