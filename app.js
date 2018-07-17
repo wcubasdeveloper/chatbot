@@ -17,6 +17,12 @@ const assistant = new AssistantV1({
   version: '2018-07-07',
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.post('/conversation/', (req, res) => {
   const { text, context = {} } = req.body;
 
