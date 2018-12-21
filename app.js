@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('./public/web'));
 
-const port = 3000;
+const port = 3000 || process.env.PORT;
 
 const assistant = new AssistantV1({
   username: "14cbe5b4-074b-4ae8-a2c5-8bb976fef4b4",
@@ -22,6 +22,11 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+app.post('/prueba/', (req, res) => {
+  res.send("HOLA");
+});
+
 
 app.post('/conversation/', (req, res) => {
   const { text, context = {} } = req.body;
